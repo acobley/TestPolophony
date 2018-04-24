@@ -30,36 +30,48 @@ public class TestPolyphony {
 
     TestPolyphony() {
         ScankeyBoard(); //Keys are in Scanned Keys
-
         AssignKeys();
         
         ActualKeysPressed[0] = 5;
         ScankeyBoard();
-
         AssignKeys();
         
         ActualKeysPressed[1] = 6;
         ScankeyBoard();
-
         AssignKeys();
      
         ActualKeysPressed[2] = 20;
         ScankeyBoard();
-
         AssignKeys();
         
         ActualKeysPressed[2] = 22;
         ScankeyBoard();
-
         AssignKeys();
+        
         ActualKeysPressed[0] = -1;
         ScankeyBoard();
-    
         AssignKeys();
         
         ActualKeysPressed[0] = 30;
-        ScankeyBoard();
-    
+        ScankeyBoard();    
+        AssignKeys();
+        
+        ActualKeysPressed[0] = 30;
+        ActualKeysPressed[1] = 34;
+        ActualKeysPressed[2] = 36;
+        ScankeyBoard();    
+        AssignKeys();
+        
+        ActualKeysPressed[0] = -1;
+        ActualKeysPressed[1] = 34;
+        ActualKeysPressed[2] = 36;
+        ScankeyBoard();    
+        AssignKeys();
+        
+         ActualKeysPressed[0] = 4;
+        ActualKeysPressed[1] = 34;
+        ActualKeysPressed[2] = 36;
+        ScankeyBoard();    
         AssignKeys();
         
     }
@@ -129,11 +141,13 @@ public class TestPolyphony {
     }
     
     void SetNewKeys(int newKeys[],int newKeyPressed[]){
+        //find lowest
         for (int k = 0; k < 4; k++) {
             if (newKeys[k] != -1) {
+                int Key=ScannedKeys[newKeys[k]];
                 for (int j = 0; j < 4; j++) { //find a free slot
                     if (newKeyPressed[j] == -1) {
-                        newKeyPressed[j] = ScannedKeys[newKeys[k]];
+                        newKeyPressed[j] = Key;
                         break;
                     }
                 }

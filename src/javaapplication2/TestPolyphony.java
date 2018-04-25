@@ -74,6 +74,24 @@ public class TestPolyphony {
         ScankeyBoard();    
         AssignKeys();
         
+        ActualKeysPressed[0] = 4;
+        ActualKeysPressed[1] = 34;
+        ActualKeysPressed[2] = -1;
+        ScankeyBoard();    
+        AssignKeys();
+        
+         ActualKeysPressed[0] = 4;
+        ActualKeysPressed[1] = 34;
+        ActualKeysPressed[2] = 32;
+        ScankeyBoard();    
+        AssignKeys();
+        
+         ActualKeysPressed[0] = 4;
+        ActualKeysPressed[1] = 32;
+        ActualKeysPressed[2] = -1;
+        ScankeyBoard();    
+        AssignKeys();
+        
     }
 
     void AssignKeys() {

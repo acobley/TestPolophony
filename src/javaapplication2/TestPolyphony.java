@@ -31,66 +31,103 @@ public class TestPolyphony {
     TestPolyphony() {
         ScankeyBoard(); //Keys are in Scanned Keys
         AssignKeys();
-        
+        ScankeyBoard();
+        AssignKeys();
+        System.out.println("------------------");
         ActualKeysPressed[0] = 5;
         ScankeyBoard();
         AssignKeys();
-        
+        ScankeyBoard();
+        AssignKeys();
+        System.out.println("------------------");
         ActualKeysPressed[1] = 6;
         ScankeyBoard();
         AssignKeys();
-     
+        ScankeyBoard();
+        AssignKeys();
+        System.out.println("------------------");
+        
         ActualKeysPressed[2] = 20;
         ScankeyBoard();
         AssignKeys();
+        ScankeyBoard();
+        AssignKeys();
+        System.out.println("------------------");
         
         ActualKeysPressed[2] = 22;
         ScankeyBoard();
         AssignKeys();
+               ScankeyBoard();
+        AssignKeys();
+        System.out.println("------------------");
         
         ActualKeysPressed[0] = -1;
         ScankeyBoard();
         AssignKeys();
+               ScankeyBoard();
+        AssignKeys();
+        System.out.println("------------------");
         
         ActualKeysPressed[0] = 30;
         ScankeyBoard();    
         AssignKeys();
+               ScankeyBoard();
+        AssignKeys();
+        System.out.println("------------------");
         
-        ActualKeysPressed[0] = 30;
+
         ActualKeysPressed[1] = 34;
         ActualKeysPressed[2] = 36;
         ScankeyBoard();    
         AssignKeys();
+               ScankeyBoard();
+        AssignKeys();
+        System.out.println("------------------");
         
         ActualKeysPressed[0] = -1;
         ActualKeysPressed[1] = 34;
         ActualKeysPressed[2] = 36;
         ScankeyBoard();    
         AssignKeys();
+               ScankeyBoard();
+        AssignKeys();
+        System.out.println("------------------");
         
          ActualKeysPressed[0] = 4;
         ActualKeysPressed[1] = 34;
         ActualKeysPressed[2] = 36;
         ScankeyBoard();    
         AssignKeys();
+               ScankeyBoard();
+        AssignKeys();
+        System.out.println("------------------");
         
         ActualKeysPressed[0] = 4;
         ActualKeysPressed[1] = 34;
         ActualKeysPressed[2] = -1;
         ScankeyBoard();    
         AssignKeys();
+               ScankeyBoard();
+        AssignKeys();
+        System.out.println("------------------");
         
          ActualKeysPressed[0] = 4;
         ActualKeysPressed[1] = 34;
         ActualKeysPressed[2] = 32;
         ScankeyBoard();    
         AssignKeys();
+               ScankeyBoard();
+        AssignKeys();
+        System.out.println("------------------");
         
          ActualKeysPressed[0] = 4;
         ActualKeysPressed[1] = 32;
         ActualKeysPressed[2] = -1;
         ScankeyBoard();    
         AssignKeys();
+               ScankeyBoard();
+        AssignKeys();
+        System.out.println("------------------");
         
     }
 
@@ -183,7 +220,7 @@ public class TestPolyphony {
             }
         }
     }
-    
+    int LastNewNotes[]={-1,-1,-1,-1};
     void FindNewNotes(int newKeys[]){
         //Find new notes
         int ptrNew = 0;
@@ -201,8 +238,14 @@ public class TestPolyphony {
                 }
                 if (Found == false) {
                     //System.out.println(ptrKept + "   Key " + Key);
-                    newKeys[ptrNew] = i;
-                    ptrNew++;
+                    if (LastNewNotes[ptrNew]!=-1){
+                       newKeys[ptrNew] = i;
+                       LastNewNotes[ptrNew]=-1;
+                       ptrNew++;
+                       
+                    }else{
+                        LastNewNotes[ptrNew]=i;
+                    }
                 }
             }
         }

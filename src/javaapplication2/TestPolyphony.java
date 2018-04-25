@@ -163,12 +163,15 @@ public class TestPolyphony {
         for (int k = 0; k < 4; k++) {
             if (newKeys[k] != -1) {
                 int Key=ScannedKeys[newKeys[k]];
-                for (int j = 0; j < 4; j++) { //find a free slot
+                
+                        
+                for (int j = 0; j <4; j++) { //find a free slot
                     if (newKeyPressed[j] == -1) {
                         newKeyPressed[j] = Key;
                         break;
                     }
                 }
+              
             }
         }
     }

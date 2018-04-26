@@ -109,20 +109,21 @@ public class TestPolyphony {
         AssignKeys();
                ScankeyBoard();
         AssignKeys();
-        System.out.println("------------------");
+        System.out.println("------- legato -----------");
         
          ActualKeysPressed[0] = 4;
         ActualKeysPressed[1] = 34;
         ActualKeysPressed[2] = 32;
         ScankeyBoard();    
         AssignKeys();
-               ScankeyBoard();
+        ActualKeysPressed[1] = -1;
+        ScankeyBoard();
         AssignKeys();
         System.out.println("------------------");
         
          ActualKeysPressed[0] = 4;
-        ActualKeysPressed[1] = 32;
-        ActualKeysPressed[2] = -1;
+       
+        ActualKeysPressed[2] = 32;
         ScankeyBoard();    
         AssignKeys();
                ScankeyBoard();
@@ -245,6 +246,7 @@ public class TestPolyphony {
                        
                     }else{
                         LastNewNotes[ptrNew]=i;
+                        ptrNew++;
                     }
                 }
             }

@@ -12,7 +12,8 @@ package javaapplication2;
 public class TestPolyphony {
 
     int ScannedKeys[] = new int[4];
-    int CurrentPoly = 4;
+    int CurrentPoly = 2;
+    int MaxPoly=4;
 
     int ActualKeysPressed[] = {-1, -1, -1, -1};
     int AssignedKeyPressed[] = {-1, -1, -1, -1};
@@ -132,31 +133,69 @@ public class TestPolyphony {
         
     }
 
+    
+void AssignMonoVoices() {
+  //Find notes this time the same as last and keep a list
+  //Which KeyPressed location are they
+  //for each unassigned note find a location for it.
+
+  int CurrentFinger = 0;
+  
+  int Key = -1;
+  for (int i = 0; i < CurrentPoly; i++) { //Assign voices
+    Key = ScannedKeys[i];
+    if (Key != -1) {
+      //States[CurrentFinger] = true;
+      AssignedKeyPressed[CurrentFinger] = Key;       //Record this Key
+      CurrentFinger++;
+    }
+  }
+}
+    
     void AssignKeys() {
-        int newKeyPressed[] = {-1, -1, -1, -1};
-        int CurrentFinger = -1;
-        //Test out last keys to current one
+        AssignMonoVoices();
+        if (CurrentPoly > 2) {
+            int newKeyPressed[] = {-1, -1, -1, -1};
+            int CurrentFinger = -1;
+            //Test out last keys to current one
 
-        int Key = -1;
-        //Find notes this time the same as last and keep a list
-        int KeptFingers[] = {-1, -1, -1, -1};
-        int newKeys[] = {-1, -1, -1, -1};
+            int Key = -1;
+            //Find notes this time the same as last and keep a list
+            int KeptFingers[] = {-1, -1, -1, -1};
+            int newKeys[] = {-1, -1, -1, -1};
 
-        FindKeptFingers(KeptFingers);
+            FindKeptFingers(KeptFingers);
 
-        FindNewNotes(newKeys);
-        //report(KeptFingers,newKeys);
-        
-        SetKeptKeys(KeptFingers,newKeyPressed);
-        SetNewKeys(newKeys,newKeyPressed);
-        
-        for (int k = 0; k < 4; k++) {
-            AssignedKeyPressed[k]=newKeyPressed[k];
+            FindNewNotes(newKeys);
+            //report(KeptFingers,newKeys);
+
+            SetKeptKeys(KeptFingers, newKeyPressed);
+            SetNewKeys(newKeys, newKeyPressed);
+
+            for (int k = 0; k < 4; k++) {
+                AssignedKeyPressed[k] = newKeyPressed[k];
+            }
         }
-        
         System.out.println("Assigned Keys   ");
         for (int k = 0; k < 4; k++) {
-            System.out.print("" + AssignedKeyPressed[k]+" , ");
+            System.out.print("" + ActualKeysPressed[k] + " , ");
+ 
+
+        }
+        System.out.println("");
+           for (int k = 0; k < 4; k++) {
+
+            
+            System.out.print("" + ScannedKeys[k] + " , ");
+            
+
+
+        }
+        System.out.println("");
+           for (int k = 0; k < 4; k++) {
+
+            
+            System.out.print("" + AssignedKeyPressed[k] + " , ");
 
         }
         System.out.println("");
@@ -281,25 +320,25 @@ public class TestPolyphony {
 
                 int Key = (8 * j) + i;
                 //System.out.println(Key);
-                for (int k = 0; k < CurrentPoly; k++) {
+                for (int k = 0; k < MaxPoly; k++) {
                     if (k < ActualKeysPressed.length) {
                         if (Key == ActualKeysPressed[k]) {
                             Keys[Count] = Key;
                             Count++;
                             //insert in order
-                            for (int l = 0; l < CurrentPoly; l++) {
+                            for (int l = 0; l < MaxPoly; l++) {
                                 if (Key > ScannedKeys[l]) {
                                     if (ScannedKeys[l] == -1) {
                                         ScannedKeys[l] = Key;
-                                        l = CurrentPoly;
+                                        l = MaxPoly;
                                     }
                                 } else {
                                     //Insert it by moving everything up one
-                                    for (int m = (CurrentPoly - 2); m >= l; m--) {
+                                    for (int m = (MaxPoly - 2); m >= l; m--) {
                                         ScannedKeys[m + 1] = ScannedKeys[m];
                                     }
                                     ScannedKeys[l] = Key;
-                                    l = CurrentPoly;
+                                    l = MaxPoly;
                                 }
 
                             }
